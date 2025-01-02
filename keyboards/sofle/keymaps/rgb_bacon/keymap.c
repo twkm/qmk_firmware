@@ -144,9 +144,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,--------------------------------------------------.                     ,-----------------------------------------------------.
   KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                         KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
   //|-----+--------+--------+--------+--------+--------|                     |--------+--------+--------+--------+--------+--------|
-  _______, _______, _______, _______, _______, _______,                       KC_F12,  _______, _______, _______, _______, _______,
-  //|-----+--------+--------+--------+--------+--------|                     |--------+--------+--------+--------+--------+--------|
-  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, KC_DEL,
+  _______, _______, _______, KC_PGUP, KC_WH_U, _______,                       KC_F12,  _______, _______, _______, _______, KC_DEL,
+  //|-----+--------+--------+--------+--------+--------|                     |-------+--------+--------+--------+--------+--------|
+  _______, XXXXXXX, XXXXXXX, KC_PGDN, KC_WH_D, XXXXXXX,                       KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, XXXXXXX,
   //|-----+--------+--------+--------+--------+--------|  ====  |   |  ====  |--------+--------+--------+--------+--------+--------|
   _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,     _______, XXXXXXX, XXXXXXX, KC_MPRV, KC_MNXT, KC_MPLY, _______,
   //|-----+--------+--------+--------+--------+--------|  ====  |   |  ====  |--------+--------+--------+--------+--------+--------|
@@ -189,7 +189,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-----+--------+--------+--------+--------+--------|  ====  |   |  ====  |--------+--------+--------+--------+--------+--------|
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,     _______, KC_PLUS, KC_P1,   KC_P2,   KC_P3,   KC_SLSH, _______,
   //|-----+--------+--------+--------+--------+--------|  ====  |   |  ====  |--------+--------+--------+--------+--------+--------|
-                 _______, _______, _______, _______, _______,           _______, _______, KC_P0,   KC_PDOT, _______
+                 _______, _______, _______, _______, _______,           _______, KC_ENT,  KC_P0,   KC_PDOT, _______
   //            \--------+--------+--------+--------+--------|         |--------+--------+--------+--------+--------/
 ),
 [_SWITCH] = LAYOUT(
@@ -298,23 +298,26 @@ static void render_logo(void) {
         0xE0, 0xE1, 0xE2, 0xE3, 0xE4, 0xE5, 0xE6, 0xE7, 0xE8, 0xE9, 0xEA, 0xEB, 0xEC, 0xED, 0xEE, 0xEF, 0xF0, 0xF1, 0xF2, 0xF3, 0xF4, 0x00
 
     };
-    static const char PROGMEM bacon_gaming_logo[] = {
-        0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87, 0x97, 0x98, 0x99, 0x8B, 0x8C, 0x8D, 0x8E, 0x8F, 0x90, 0x91, 0x92, 0x93, 0x94,
-        0xA0, 0xA1, 0xA2, 0xA3, 0xA4, 0xA5, 0xA6, 0xA7, 0xB7, 0xB8, 0xB9, 0xAB, 0xAC, 0xAD, 0xAE, 0xAF, 0xB0, 0xB1, 0xB2, 0xB3, 0xB4,
-        0xC0, 0xC1, 0xC2, 0xC3, 0xC4, 0xC5, 0xC6, 0xC7, 0xD7, 0xD8, 0xD9, 0xCB, 0xCC, 0xCD, 0xCE, 0xCF, 0xD0, 0xD1, 0xD2, 0xD3, 0xD4,
-        0xE0, 0xE1, 0xE2, 0xE3, 0xE4, 0xE5, 0xE6, 0xE7, 0xF7, 0xF8, 0xF9, 0xEB, 0xEC, 0xED, 0xEE, 0xEF, 0xF0, 0xF1, 0xF2, 0xF3, 0xF4, 0x00
-    };
+    //static const char PROGMEM bacon_gaming_logo[] = {
+    //    0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87, 0x97, 0x98, 0x99, 0x8B, 0x8C, 0x8D, 0x8E, 0x8F, 0x90, 0x91, 0x92, 0x93, 0x94,
+    //    0xA0, 0xA1, 0xA2, 0xA3, 0xA4, 0xA5, 0xA6, 0xA7, 0xB7, 0xB8, 0xB9, 0xAB, 0xAC, 0xAD, 0xAE, 0xAF, 0xB0, 0xB1, 0xB2, 0xB3, 0xB4,
+    //    0xC0, 0xC1, 0xC2, 0xC3, 0xC4, 0xC5, 0xC6, 0xC7, 0xD7, 0xD8, 0xD9, 0xCB, 0xCC, 0xCD, 0xCE, 0xCF, 0xD0, 0xD1, 0xD2, 0xD3, 0xD4,
+    //    0xE0, 0xE1, 0xE2, 0xE3, 0xE4, 0xE5, 0xE6, 0xE7, 0xF7, 0xF8, 0xF9, 0xEB, 0xEC, 0xED, 0xEE, 0xEF, 0xF0, 0xF1, 0xF2, 0xF3, 0xF4, 0x00
+    //};
 
-    switch (get_highest_layer(default_layer_state)) {
-        case _GAMING:
-            oled_write_P(bacon_gaming_logo, false);
-            break;
-        case _QWERTY:
-        case _COLEMAK:
-        case _COLEMAKDH:
-        default:
-            oled_write_P(bacon_logo, false);
-    }
+    //switch (get_highest_layer(default_layer_state)) {
+    //    case _QWERTY:
+    //    case _COLEMAK:
+    //    case _COLEMAKDH:
+    //    default:
+    //        oled_write_P(bacon_logo, false);
+    //        break;
+    //    case _GAMING:
+    //        oled_write_P(bacon_gaming_logo, false);
+    //        break;
+    //}
+
+    oled_write_P(bacon_logo, false);
 }
 
 static void print_status_narrow(void) {
