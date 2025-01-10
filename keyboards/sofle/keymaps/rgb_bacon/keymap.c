@@ -98,7 +98,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-----+--------+--------+--------+--------+--------|  ====  |   |  ====  |--------+--------+--------+--------+--------+--------|
   KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_MUTE,     KC_MPLY, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
   //|-----+--------+--------+--------+--------+--------|  ====  |   |  ====  |--------+--------+--------+--------+--------+--------|
-                 KC_LCTL, KC_LALT, KC_LGUI, KC_ENT,  KC_LOWER,          KC_RAISE,KC_SPC,  KC_RCTL, KC_RALT, TO(6)
+                 KC_LCTL, KC_LALT, KC_LGUI, KC_ENT,  KC_LOWER,          KC_RAISE,KC_SPC,  KC_RCTL, KC_RALT, TO(8)
   //            \--------+--------+--------+--------+--------|         |--------+--------+--------+--------+--------/
 ),
 [_COLEMAK] = LAYOUT(
@@ -168,7 +168,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
   [_ADJUST] = LAYOUT(
   //,--------------------------------------------------.                     ,-----------------------------------------------------.
-  XXXXXXX, TO(6),   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|-----+--------+--------+--------+--------+--------|                     |--------+--------+--------+--------+--------+--------|
   XXXXXXX, KC_QWERTY,KC_COLEMAKDH,KC_COLEMAK, XXXXXXX, XXXXXXX,               XXXXXXX, XXXXXXX, KC_BRIU, XXXXXXX, XXXXXXX, QK_BOOT,
   //|-----+--------+--------+--------+--------+--------|                     |--------+--------+--------+--------+--------+--------|
@@ -194,18 +194,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 [_SWITCH] = LAYOUT(
   //,--------------------------------------------------.                     ,-----------------------------------------------------.
-  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  TO(0),   TO(7),   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|-----+--------+--------+--------+--------+--------|                     |--------+--------+--------+--------+--------+--------|
-  TO(0),   TO(1),   TO(2),   TO(3),   TO(4),   TO(5),                         TO(6),   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT,
   //|-----+--------+--------+--------+--------+--------|                     |--------+--------+--------+--------+--------+--------|
-  XXXXXXX, XXXXXXX, KC_BRIU, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, EE_CLR,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, EE_CLR,
   //|-----+--------+--------+--------+--------+--------|  ====  |   |  ====  |--------+--------+--------+--------+--------+--------|
   KC_SYSTEM_SLEEP,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|-----+--------+--------+--------+--------+--------|  ====  |   |  ====  |--------+--------+--------+--------+--------+--------|
-                 XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+                 _______, _______, _______, _______, _______,           _______, _______, _______, _______, _______
   //            \--------+--------+--------+--------+--------|         |--------+--------+--------+--------+--------/
-
-	),
+),
 };
 
 #ifdef RGBLIGHT_ENABLE
