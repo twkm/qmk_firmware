@@ -98,7 +98,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-----+--------+--------+--------+--------+--------|  ====  |   |  ====  |--------+--------+--------+--------+--------+--------|
   KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_MUTE,     KC_MPLY, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
   //|-----+--------+--------+--------+--------+--------|  ====  |   |  ====  |--------+--------+--------+--------+--------+--------|
-                 KC_LCTL, KC_LALT, KC_LGUI, KC_ENT,  KC_LOWER,          KC_RAISE,KC_SPC,  KC_RCTL, KC_RALT, XXXXXXX
+                 KC_LCTL, KC_LALT, KC_LGUI, KC_ENT,  KC_LOWER,          KC_RAISE,KC_SPC,  KC_RCTL, KC_RALT, TO(6)
   //            \--------+--------+--------+--------+--------|         |--------+--------+--------+--------+--------/
 ),
 [_COLEMAK] = LAYOUT(
@@ -458,7 +458,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 #ifdef ENCODER_ENABLE
-
 bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {
         if (clockwise) {
@@ -466,35 +465,35 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         } else {
             tap_code(KC_VOLD);
         }
-		} else if (index == 1) {
-			switch (get_highest_layer(layer_state)) {
-				case _COLEMAK:
-				case _QWERTY:
-				case _COLEMAKDH:
-					if (clockwise) {
-						tap_code(KC_PGDN);
-					} else {
-						tap_code(KC_PGUP);
-					}
-				break;
-			case _RAISE:
-			case _LOWER:
-					if (clockwise) {
-						tap_code(KC_DOWN);
-					} else {
-						tap_code(KC_UP);
-					}
-				break;
-			default:
-					if (clockwise) {
-						tap_code(KC_WH_D);
-					} else {
-						tap_code(KC_WH_U);
-					}
-				break;
-		}
+        return false;
+    } else if (index == 1) {
+        switch (get_highest_layer(layer_state)) {
+            case _COLEMAK:
+            case _QWERTY:
+            case _COLEMAKDH:
+                if (clockwise) {
+                    tap_code(KC_PGDN);
+                } else {
+                    tap_code(KC_PGUP);
+                }
+                return false;
+            case _RAISE:
+            case _LOWER:
+                    if (clockwise) {
+                        tap_code(KC_DOWN);
+                    } else {
+                        tap_code(KC_UP);
+                    }
+                return false;
+            default:
+                    if (clockwise) {
+                        tap_code(KC_WH_D);
+                    } else {
+                        tap_code(KC_WH_U);
+                    }
+                return false;
+        }
     }
     return true;
 }
-
 #endif

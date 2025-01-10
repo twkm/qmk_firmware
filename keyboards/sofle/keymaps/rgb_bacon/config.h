@@ -29,6 +29,10 @@
 
 #define CUSTOM_LAYER_READ //if you remove this it causes issues - needs better guarding
 
+#ifdef ENCODER_ENABLE
+    #undef ENCODER_RESOLUTION
+    #define ENCODER_RESOLUTION 4
+#endif
 
 #define QUICK_TAP_TERM 0
 #ifdef TAPPING_TERM
