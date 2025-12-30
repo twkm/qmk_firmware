@@ -26,6 +26,7 @@
 
 #define OLED_FONT_H "baconfont.c"
 #define OLED_FONT_END 255
+#define OLED_BRIGHTNESS 128
 
 #define CUSTOM_LAYER_READ //if you remove this it causes issues - needs better guarding
 
